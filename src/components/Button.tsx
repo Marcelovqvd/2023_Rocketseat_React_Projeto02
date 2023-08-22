@@ -1,19 +1,9 @@
-import {
-  ButtonContainer,
-  backgroundColorTypes,
-  colorTypes,
-} from './Button.styles'
+import { ButtonContainer } from './Button.styles'
 
 interface ButtonProps {
   action: 'salvar' | 'enviar'
-  backgroundColor?: backgroundColorTypes
-  color: colorTypes
 }
 
-export function Button({ action, backgroundColor, color }: ButtonProps) {
-  return (
-    <ButtonContainer backgroundColor={backgroundColor} color={color}>
-      {action}
-    </ButtonContainer>
-  )
+export function Button({ action }: ButtonProps) {
+  return <ButtonContainer>{action}</ButtonContainer>
 }
