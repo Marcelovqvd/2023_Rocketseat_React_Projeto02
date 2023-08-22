@@ -1,22 +1,16 @@
-import { Button } from "./components/Button";
+import { ThemeProvider } from "styled-components";
+import { Button } from './components/Button';
+
+import { defaultTheme } from "./styles/themes/default";
 
 export function App() {
   return (
-    <>
-      <Button 
-        action={'enviar'}
-        backgroundColor="black"
-        color='white'
-      />
-      <Button 
-        action={'enviar'}
-        backgroundColor='white'
-        color='black'
-      />
-      <Button 
-        action={'enviar'}        
-        color='black'
-      />
-    </>
+    <ThemeProvider theme={defaultTheme}>
+      <Button variant="primary" />
+      <Button variant="secondary" />
+      <Button variant="success" />
+      <Button variant="danger" />
+      <Button />
+    </ThemeProvider>
   )
 }
