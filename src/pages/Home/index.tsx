@@ -1,72 +1,34 @@
-import { Play } from 'phosphor-react'
-import { useForm } from 'react-hook-form'
-
-import {
-  CountdownContainer,
-  FormContainer,
-  HomeContainer,
-  MinutesAmountInput,
-  Separator,
-  StartCountdownButton,
-  TaskInput,
-} from './styles'
+import { useState } from "react"
+import { Post } from "../../components/post"
+import { HomeContainer } from "./styles"
 
 export function Home() {
-  const { register, handleSubmit, watch } = useForm()
+  const [comments, setComments] = useState([])
+  const [newCommentText, setNewCommentText] = useState("")
 
-  function handleCreateNewCycle(data: any) {
-    console.log(data)
+  function handleCreateNewComment() {
+    event?.preventDefault()
+    setComments([...comments, newCommentText])
+    setNewCommentText("")
   }
 
-  const task = watch('task')
-  const isSubmitDisable = !task
+  function handleNewCommentChange() {
+    setNewCommentText(event?.target.value)
+  }
 
   return (
     <HomeContainer>
-      <form onSubmit={handleSubmit(handleCreateNewCycle)}>
-        <FormContainer>
-          <label htmlFor="task">Vou trabalhar em</label>
-          <TaskInput
-            id="task"
-            list="task-suggestions"
-            placeholder="Dê um nome para o seu projeto"
-            {...register('task')}
-          />
-
-          <datalist id="task-suggestions">
-            <option value="Projeto 1" />
-            <option value="Projeto 2" />
-            <option value="Projeto 3" />
-            <option value="Banana" />
-          </datalist>
-
-          <label htmlFor="minutesAmount">durante</label>
-          <MinutesAmountInput
-            type="number"
-            id="minutesAmount"
-            placeholder="00"
-            step={5}
-            min={5}
-            max={60}
-            {...register('minutesAmount', { valueAsNumber: true })}
-          />
-
-          <span>minutos.</span>
-        </FormContainer>
-
-        <CountdownContainer>
-          <span>0</span>
-          <span>0</span>
-          <Separator>:</Separator>
-          <span>0</span>
-          <span>0</span>
-        </CountdownContainer>
-
-        <StartCountdownButton disabled={isSubmitDisable} type="submit">
-          <Play size={24} />
-          Começar
-        </StartCountdownButton>
+      <form onSubmit={handleCreateNewComment}>
+        <input
+          name="comment"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
+        />
+        <button type="submit">Postar comentário</button>
       </form>
+      {comments.map((i) => {
+        return <Post text={i} />
+      })}
     </HomeContainer>
   )
 }
