@@ -1,6 +1,18 @@
 # Ignite Timer
 ### SPA com ReactJS
 
+### techs:
+- ite
+- react
+- react-hook-form
+- react-router-dom
+- date-fns
+- immer
+- phosphor-react
+- styled-components
+- zod
+
+### To execute the app:
 - Clone the project
 - Install the dependencies
 - Run: <package manager> dev
