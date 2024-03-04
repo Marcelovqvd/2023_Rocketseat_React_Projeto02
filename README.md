@@ -2,7 +2,7 @@
 ### SPA com ReactJS
 
 ### techs:
-- ite
+- Vite
 - react
 - react-hook-form
 - react-router-dom
